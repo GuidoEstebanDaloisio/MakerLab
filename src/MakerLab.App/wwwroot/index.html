@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MakerLab</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="barra">
+    <div class="marca">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28"><rect x="5" y="9" width="22" height="16" rx="4" fill="currentColor"/><circle cx="12" cy="17" r="2.6" fill="#fff"/><circle cx="20" cy="17" r="2.6" fill="#fff"/><rect x="14.5" y="3" width="3" height="6" fill="currentColor"/><circle cx="16" cy="3" r="2.2" fill="currentColor"/><rect x="2" y="13" width="3" height="8" rx="1.5" fill="currentColor"/><rect x="27" y="13" width="3" height="8" rx="1.5" fill="currentColor"/></svg>
+      </span>
+      <span class="nombre">MakerLab</span>
+    </div>
+
+    <label class="selector-leccion">
+      <span class="sr">Lección</span>
+      <select id="selLeccion"></select>
+    </label>
+
+    <div class="tamano" role="group" aria-label="Tamaño de la interfaz">
+      <button id="btnAchicar" class="btn" title="Achicar la interfaz">A−</button>
+      <button id="btnAgrandar" class="btn" title="Agrandar la interfaz">A+</button>
+    </div>
+
+    <div class="acciones">
+      <button id="btnEjecutar" class="btn primario" title="Probar el programa en el simulador (F5)">▶ Probar</button>
+      <button id="btnDetener" class="btn" title="Detener el programa" disabled>■ Detener</button>
+      <button id="btnReiniciar" class="btn" title="Volver el robot a la posición inicial">↺ Reiniciar</button>
+      <span class="separador"></span>
+      <button id="btnEnviar" class="btn robot" title="Enviar el programa al robot DAVE por USB">⬆ Enviar a DAVE</button>
+      <span class="separador"></span>
+      <button id="btnAbrir" class="btn" title="Abrir un proyecto guardado">Abrir</button>
+      <button id="btnGuardar" class="btn" title="Guardar el proyecto">Guardar</button>
+      <button id="btnMenu" class="btn" title="Más opciones" aria-haspopup="true">⋯</button>
+      <div id="menu" class="menu" hidden>
+        <button data-accion="importar">Importar lección (.zip)…</button>
+        <button data-accion="carpeta">Abrir carpeta de lecciones</button>
+        <button data-accion="acerca">Acerca de MakerLab</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="area">
+    <section class="editor">
+      <div id="blockly"></div>
+    </section>
+
+    <aside class="panel">
+      <section class="consigna" id="consigna">
+        <p class="nivel" id="lecNivel"></p>
+        <h1 id="lecTitulo">Cargando…</h1>
+        <p id="lecConsigna"></p>
+        <details id="lecPistas"><summary>Necesito una pista</summary><ol></ol></details>
+      </section>
+
+      <div class="pestanas" role="tablist">
+        <button role="tab" class="pestana activa" data-pestana="sim" aria-selected="true">Simulador</button>
+        <button role="tab" class="pestana" data-pestana="codigo" aria-selected="false">Código Arduino</button>
+        <label class="velocidad" title="Hace que la simulación vaya más rápido o más lento. No cambia el programa ni el tiempo que cuenta el reloj.">Velocidad
+          <select id="selVelocidad"><option value="0.5">×½</option><option value="1" selected>×1</option><option value="2">×2</option><option value="4">×4</option></select>
+        </label>
+      </div>
+
+      <section class="vista" id="vistaSim">
+        <div class="lienzo-marco">
+          <canvas id="lienzo" width="640" height="420"></canvas>
+          <div id="aviso" class="aviso" hidden></div>
+        </div>
+        <div class="tablero">
+          <div class="grupo reloj" title="Tiempo que lleva funcionando el programa. Sirve para calcular cuánto tiene que durar cada movimiento. Siempre cuenta segundos reales del robot, aunque cambies la velocidad de la simulación.">
+            <span class="etiqueta">⏱ Tiempo del programa</span>
+            <b id="lecTiempo">0,0 s</b>
+          </div>
+          <div class="grupo" data-comp="led" title="Las luces LED de DAVE. Se encienden y apagan con los bloques de luces.">
+            <span class="etiqueta">Luces</span>
+            <div class="leds">
+              <span class="led" data-led="verde" title="LED verde"></span>
+              <span class="led" data-led="amarillo" title="LED amarillo"></span>
+              <span class="led" data-led="rojo" title="LED rojo"></span>
+              <span class="led" data-led="azul" title="LED azul"></span>
+              <span class="led" data-led="blancas" title="Luces blancas"></span>
+            </div>
+          </div>
+          <div class="grupo" data-comp="sonido" title="La bocina (buzzer) de DAVE. Se ilumina mientras suena.">
+            <span class="etiqueta">Bocina</span>
+            <span class="buzzer" id="buzzer">♪</span>
+          </div>
+          <div class="grupo" data-comp="boton" title="Los tres botones de DAVE. Hacé clic en un círculo para presionar ese botón.">
+            <span class="etiqueta">Botones (clic)</span>
+            <div class="botones">
+              <button class="boton-robot" data-boton="1">1</button>
+              <button class="boton-robot" data-boton="2">2</button>
+              <button class="boton-robot" data-boton="3">3</button>
+            </div>
+          </div>
+          <div class="grupo" data-comp="distancia" title="Lo que mide el sensor ultrasónico: la distancia al obstáculo que DAVE tiene adelante.">
+            <span class="etiqueta">Sensor de distancia</span>
+            <b id="lecDist">–</b>
+          </div>
+          <div class="grupo" data-comp="linea" title="Los dos sensores de línea de DAVE. El círculo se rellena cuando el sensor está sobre la línea negra.">
+            <span class="etiqueta">Sensores de línea</span>
+            <b id="lecLinea">–</b>
+          </div>
+        </div>
+      </section>
+
+      <section class="vista" id="vistaCodigo" hidden>
+        <p class="ayuda">Este es el programa que MakerLab escribe a partir de tus bloques. Es el que se envía a la placa Arduino de DAVE.</p>
+        <pre id="codigo"></pre>
+      </section>
+    </aside>
+  </main>
+
+  <dialog id="dlgEnviar">
+    <form method="dialog" class="dlg">
+      <h2>Enviar el programa a DAVE</h2>
+      <p>Conectá el robot a la computadora con el cable USB.</p>
+      <label>Puerto
+        <select id="selPuerto"></select>
+      </label>
+      <button type="button" id="btnBuscarPuertos" class="btn">Buscar de nuevo</button>
+      <pre id="logEnvio" class="log"></pre>
+      <div class="dlg-acciones">
+        <button value="cancelar" class="btn">Cerrar</button>
+        <button type="button" id="btnConfirmarEnvio" class="btn robot">Enviar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dlgMensaje">
+    <form method="dialog" class="dlg">
+      <h2 id="msgTitulo"></h2>
+      <p id="msgTexto"></p>
+      <div class="dlg-acciones"><button class="btn primario">Aceptar</button></div>
+    </form>
+  </dialog>
+
+  <script src="lib/blockly/blockly_compressed.js"></script>
+  <script src="lib/blockly/blocks_compressed.js"></script>
+  <script src="lib/blockly/javascript_compressed.js"></script>
+  <script src="lib/blockly/msg/es.js"></script>
+  <script src="js/puente.js"></script>
+  <script src="js/bloques.js"></script>
+  <script src="js/generador-arduino.js"></script>
+  <script src="js/generador-simulador.js"></script>
+  <script src="js/simulador.js"></script>
+  <script src="js/seleccion.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

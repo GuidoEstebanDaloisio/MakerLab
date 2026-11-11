@@ -1,0 +1,58 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "08-mientras",
+  "orden": 8,
+  "titulo": "Repetir mientras…",
+  "autor": "MakerLab",
+  "objetivo": "Usar una repetición controlada por una condición.",
+  "consigna": "Llevá a DAVE hasta la meta. No sabés exactamente cuánto mide cada pasillo, así que usá \"repetir mientras\" para avanzar mientras no haya un obstáculo cerca, y después girá.",
+  "pistas": [
+    "\"repetir mientras no hay obstáculo… avanzar\" deja de repetir cuando aparece la pared.",
+    "Después de cada pasillo: detenerse y girar un paso.",
+    "Fijate para qué lado tiene que girar DAVE en cada esquina."
+  ],
+  "bloques": [
+    "dave_paso",
+    "dave_mover",
+    "dave_detener",
+    "dave_esperar",
+    "controls_repeat_ext",
+    "math_number",
+    "dave_led",
+    "dave_sonido",
+    "dave_esperar_boton",
+    "dave_boton",
+    "dave_si",
+    "dave_siempre",
+    "dave_si_sino",
+    "dave_obstaculo",
+    "dave_distancia",
+    "logic_compare",
+    "controls_whileUntil",
+    "logic_negate",
+    "logic_operation",
+    "logic_boolean"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 40,
+      "y": 175,
+      "angulo": 0
+    },
+    "meta": {
+      "x": 290,
+      "y": 30,
+      "radio": 18,
+      "detenerse": true
+    },
+    "obstaculos": [
+      {
+        "x": 250,
+        "y": 60,
+        "ancho": 20,
+        "alto": 150
+      }
+    ]
+  }
+}

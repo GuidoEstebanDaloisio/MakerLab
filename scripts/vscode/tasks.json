@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Ejecutar MakerLab",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["run", "--project", "src/MakerLab.App"],
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Pruebas del núcleo",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["run", "--project", "tests/MakerLab.Core.Pruebas"],
+      "group": "test",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Preparar arduino-cli (una sola vez, con internet)",
+      "type": "process",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy", "Bypass", "-File", "scripts/preparar-arduino-cli.ps1"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Publicar versión portable",
+      "type": "process",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy", "Bypass", "-File", "scripts/publicar.ps1"],
+      "problemMatcher": []
+    }
+  ]
+}

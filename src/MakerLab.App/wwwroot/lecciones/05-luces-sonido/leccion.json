@@ -1,0 +1,31 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "05-luces-sonido",
+  "orden": 5,
+  "titulo": "Luces y sonido",
+  "autor": "MakerLab",
+  "objetivo": "Controlar actuadores que no son motores: LEDs y buzzer.",
+  "consigna": "Convertí a DAVE en un semáforo: verde 3 segundos, amarillo 1 segundo y rojo 3 segundos, con un pitido cuando cambia a rojo. Repetí el ciclo 3 veces. Ojo: antes de prender una luz hay que apagar la anterior.",
+  "pistas": [
+    "Mirá las luces debajo del simulador para ver qué está encendido.",
+    "Un ciclo del semáforo es: prender, esperar, apagar… para cada color."
+  ],
+  "bloques": [
+    "dave_paso",
+    "dave_mover",
+    "dave_detener",
+    "dave_esperar",
+    "controls_repeat_ext",
+    "math_number",
+    "dave_led",
+    "dave_sonido"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 160,
+      "y": 105,
+      "angulo": -90
+    }
+  }
+}

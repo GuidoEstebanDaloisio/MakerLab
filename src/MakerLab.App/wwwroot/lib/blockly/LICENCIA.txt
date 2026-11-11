@@ -1,0 +1,3 @@
+Blockly 12.5.1 — Copyright Google LLC.
+Licencia Apache 2.0: https://www.apache.org/licenses/LICENSE-2.0
+Fuente: https://github.com/google/blockly

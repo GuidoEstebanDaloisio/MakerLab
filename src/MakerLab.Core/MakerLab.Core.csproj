@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Núcleo de MakerLab: lógica sin interfaz gráfica (lecciones, proyectos,
+       comunicación con arduino-cli y procesamiento de mensajes de la interfaz).
+       No depende de Windows, por lo que se puede compilar y probar en cualquier sistema. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MakerLab.Core</RootNamespace>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Pruebas automáticas del núcleo. No usan librerías externas para que
+       puedan ejecutarse sin conexión (ver README). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MakerLab.Core\MakerLab.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Se prueban las lecciones reales que vienen con la aplicación. -->
+    <None Include="..\..\src\MakerLab.App\wwwroot\lecciones\**\leccion.json" LinkBase="lecciones" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

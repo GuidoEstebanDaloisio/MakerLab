@@ -1,0 +1,37 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "01-movimiento",
+  "orden": 1,
+  "titulo": "Primeros pasos",
+  "autor": "MakerLab",
+  "objetivo": "Reconocer los movimientos básicos del robot: avanzar, retroceder y girar.",
+  "consigna": "DAVE tiene que llegar a la meta verde. Cada paso lo mueve 20 cm (dos cuadraditos grandes de la cuadrícula) y cada giro lo hace doblar 90°. Armá la secuencia de pasos debajo del bloque \"Al iniciar\" y probala.",
+  "pistas": [
+    "Contá cuántos cuadrados de 10 cm hay hasta la esquina: cada paso avanza dos.",
+    "Cuando DAVE gira, gira en el lugar: no se mueve hacia adelante.",
+    "Si te equivocás, tocá \"Reiniciar\", corregí los bloques y probá de nuevo."
+  ],
+  "bloques": [
+    "dave_paso"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 50,
+      "y": 165,
+      "angulo": 0
+    },
+    "meta": {
+      "x": 130,
+      "y": 85,
+      "radio": 12
+    },
+    "marcas": [
+      {
+        "x": 50,
+        "y": 165,
+        "texto": ""
+      }
+    ]
+  }
+}

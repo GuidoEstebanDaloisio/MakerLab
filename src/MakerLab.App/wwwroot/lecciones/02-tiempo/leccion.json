@@ -1,0 +1,42 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "02-tiempo",
+  "orden": 2,
+  "titulo": "El tiempo",
+  "autor": "MakerLab",
+  "objetivo": "Controlar la duración de un movimiento usando esperas.",
+  "consigna": "Ahora hay bloques que encienden los motores y DAVE sigue moviéndose hasta que lo detengas. Hacé que avance 2,5 segundos y se detenga dentro de la meta, sin tocar la pared.",
+  "pistas": [
+    "Necesitás tres bloques: uno que encienda los motores, uno que espere y uno que los apague.",
+    "DAVE recorre 20 cm por segundo. ¿Cuántos centímetros hay hasta la meta?",
+    "\"esperar\" acepta decimales: 2.5 es dos segundos y medio."
+  ],
+  "bloques": [
+    "dave_paso",
+    "dave_mover",
+    "dave_detener",
+    "dave_esperar"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 40,
+      "y": 105,
+      "angulo": 0
+    },
+    "meta": {
+      "x": 90,
+      "y": 105,
+      "radio": 9,
+      "detenerse": true
+    },
+    "obstaculos": [
+      {
+        "x": 150,
+        "y": 40,
+        "ancho": 14,
+        "alto": 130
+      }
+    ]
+  }
+}

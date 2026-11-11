@@ -1,0 +1,179 @@
+/* MakerLab — estilos de la interfaz.
+   Todo es local: no se usan fuentes ni recursos de internet. */
+:root {
+  --fondo: #f3f1ec;
+  --papel: #ffffff;
+  --tinta: #1d2433;
+  --tinta-suave: #5b6475;
+  --linea: #ddd8cc;
+  --barra: #1f2a44;
+  --barra-tinta: #f3f1ec;
+  --primario: #2f9e57;
+  --primario-osc: #237a43;
+  --robot: #e8772e;
+  --robot-osc: #c45f1d;
+  --peligro: #c8423b;
+  --radio: 10px;
+  --sombra: 0 1px 2px rgba(20, 24, 33, .08), 0 4px 14px rgba(20, 24, 33, .06);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  color: var(--tinta);
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+html, body { height: 100%; margin: 0; background: var(--fondo); }
+body { display: flex; flex-direction: column; overflow: hidden; }
+[hidden] { display: none !important; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* Barra superior */
+.barra {
+  display: flex; align-items: center; gap: 16px;
+  padding: 8px 14px; background: var(--barra); color: var(--barra-tinta);
+}
+.marca { display: flex; align-items: center; gap: 8px; }
+.logo { color: var(--robot); display: grid; place-items: center; }
+.nombre { font-weight: 700; font-size: 18px; letter-spacing: .3px; }
+.selector-leccion select {
+  font: inherit; font-size: 14px; padding: 6px 10px; border-radius: 8px;
+  border: 1px solid #3a4766; background: #2a3657; color: var(--barra-tinta); max-width: 340px;
+}
+.acciones { margin-left: auto; display: flex; align-items: center; gap: 6px; position: relative; }
+.separador { width: 1px; height: 24px; background: #3a4766; margin: 0 4px; }
+
+.btn {
+  font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  padding: 7px 12px; border-radius: 8px; border: 1px solid transparent;
+  background: #2a3657; color: var(--barra-tinta);
+}
+.btn:hover:not(:disabled) { background: #34416a; }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.primario { background: var(--primario); color: #fff; }
+.btn.primario:hover:not(:disabled) { background: var(--primario-osc); }
+.btn.robot { background: var(--robot); color: #fff; }
+.btn.robot:hover:not(:disabled) { background: var(--robot-osc); }
+.btn:focus-visible, .pestana:focus-visible, .boton-robot:focus-visible { outline: 3px solid #f2c14e; outline-offset: 2px; }
+
+.menu {
+  position: absolute; right: 0; top: 40px; z-index: 30; min-width: 230px;
+  background: var(--papel); color: var(--tinta); border-radius: var(--radio);
+  box-shadow: var(--sombra); border: 1px solid var(--linea); padding: 6px;
+  display: flex; flex-direction: column;
+}
+.menu button { font: inherit; text-align: left; padding: 8px 10px; border: 0; background: none; border-radius: 6px; cursor: pointer; }
+.menu button:hover { background: var(--fondo); }
+
+/* Área principal */
+.area { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) clamp(440px, 44vw, 760px); min-height: 0; }
+.editor { position: relative; min-width: 0; }
+#blockly { position: absolute; inset: 0; }
+/* El panel solo se desplaza si la consigna es muy larga para la pantalla. */
+.panel {
+  display: flex; flex-direction: column; gap: 10px; padding: 12px;
+  border-left: 1px solid var(--linea); overflow-y: auto; min-height: 0;
+}
+
+.consigna {
+  background: var(--papel); border-radius: var(--radio); box-shadow: var(--sombra);
+  padding: .9rem 1.1rem; border-left: 6px solid var(--robot);
+}
+.consigna .nivel { margin: 0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: .8px; color: var(--tinta-suave); font-weight: 700; }
+.consigna h1 { margin: 2px 0 8px; font-size: 1.55rem; }
+.consigna p { margin: 0 0 8px; line-height: 1.5; font-size: 1.15rem; }
+.consigna details { font-size: 1.05rem; color: var(--tinta-suave); }
+.consigna summary { cursor: pointer; font-weight: 600; color: var(--primario-osc); }
+.consigna ol { margin: 6px 0 0; padding-left: 1.4rem; line-height: 1.45; }
+.consigna li { margin-bottom: 4px; }
+
+.pestanas { display: flex; align-items: flex-end; gap: 4px; white-space: nowrap; border-bottom: 1px solid var(--linea); }
+.pestana {
+  font: inherit; font-size: 0.95rem; font-weight: 600; padding: .45rem .9rem; cursor: pointer;
+  border: 1px solid transparent; border-bottom: none; border-radius: 8px 8px 0 0;
+  background: none; color: var(--tinta-suave);
+}
+.pestana.activa { background: var(--papel); color: var(--tinta); border-color: var(--linea); margin-bottom: -1px; }
+
+.vista { display: flex; flex-direction: column; gap: 8px; }
+/* El simulador ocupa el alto disponible y se achica para que el reloj
+   y el tablero queden siempre a la vista, aun en pantallas de 768 px. */
+#vistaSim { flex: 1 1 auto; min-height: 0; }
+.lienzo-marco { position: relative; flex: 1 1 auto; min-height: 170px; display: flex; align-items: center; justify-content: center; }
+#lienzo { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: var(--radio); box-shadow: var(--sombra); background: #fff; }
+.aviso {
+  position: absolute; left: 50%; top: 14px; transform: translateX(-50%);
+  padding: .5rem 1rem; border-radius: 999px; font-weight: 700; font-size: 1.05rem;
+  background: var(--tinta); color: #fff; box-shadow: var(--sombra);
+}
+.aviso.exito { background: var(--primario); }
+.aviso.error { background: var(--peligro); }
+
+.tablero {
+  display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem;
+  background: var(--papel); border-radius: var(--radio); box-shadow: var(--sombra); padding: .6rem;
+  font-size: 0.95rem;
+}
+.grupo {
+  display: flex; flex-direction: column; justify-content: space-between; gap: .3rem;
+  padding: .35rem .6rem; border-radius: 8px; background: var(--fondo);
+}
+.etiqueta { font-size: .75rem; font-weight: 700; color: var(--tinta-suave); text-transform: uppercase; letter-spacing: .4px; white-space: nowrap; }
+.grupo b { color: var(--tinta); font-variant-numeric: tabular-nums; font-size: 1.05rem; white-space: nowrap; }
+.reloj { background: #e6f2ea; min-width: 9.5rem; }
+.reloj b { font-size: 1.6rem; line-height: 1.1; color: var(--primario-osc); }
+.leds { display: flex; align-items: center; gap: .45rem; min-height: 2.1rem; }
+.led { width: 1.15rem; height: 1.15rem; border-radius: 50%; border: 2px solid rgba(0,0,0,.18); background: #d9d6ce; transition: background .08s, box-shadow .08s; }
+.led[data-led="verde"].on { background: #31c96b; box-shadow: 0 0 10px #31c96b; }
+.led[data-led="amarillo"].on { background: #ffd23f; box-shadow: 0 0 10px #ffd23f; }
+.led[data-led="rojo"].on { background: #ff4b3e; box-shadow: 0 0 10px #ff4b3e; }
+.led[data-led="azul"].on { background: #3d8bff; box-shadow: 0 0 10px #3d8bff; }
+.led[data-led="blancas"].on { background: #fffbe8; box-shadow: 0 0 12px #f5e9a8; }
+.buzzer { font-size: 1.5rem; line-height: 2.1rem; color: #b9b4a8; text-align: center; transition: transform .08s; }
+.buzzer.on { color: var(--robot); transform: scale(1.25); }
+.botones { display: flex; gap: .4rem; }
+.boton-robot {
+  width: 2.1rem; height: 2.1rem; border-radius: 50%; border: 2px solid #8b8576; cursor: pointer;
+  background: #fff; font: inherit; font-weight: 700;
+}
+.boton-robot:hover { background: #f4efe2; }
+.boton-robot.presionado { background: #8b8576; color: #fff; }
+.velocidad { margin-left: auto; align-self: center; white-space: nowrap; font-size: .85rem; color: var(--tinta-suave); }
+.velocidad select { font: inherit; padding: .15rem; margin-left: 4px; }
+
+/* Control de tamaño de la interfaz */
+.tamano { display: flex; gap: 4px; }
+.tamano .btn { min-width: 2.4rem; padding-left: .5rem; padding-right: .5rem; }
+
+.ayuda { margin: 0; font-size: 0.875rem; color: var(--tinta-suave); }
+#codigo, .log {
+  margin: 0; padding: 12px; border-radius: var(--radio); background: #1b2030; color: #e7e3d6;
+  font-family: Consolas, "Cascadia Mono", "Courier New", monospace; font-size: 0.8125rem; line-height: 1.45;
+  white-space: pre; overflow: auto; max-height: 60vh;
+}
+.log { max-height: 200px; min-height: 80px; font-size: 0.75rem; white-space: pre-wrap; }
+
+dialog { border: none; border-radius: 14px; padding: 0; box-shadow: 0 10px 40px rgba(0,0,0,.25); max-width: 560px; width: 92vw; }
+dialog::backdrop { background: rgba(20, 24, 33, .45); }
+.dlg { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.dlg h2 { margin: 0; font-size: 1.1875rem; }
+.dlg p { margin: 0; line-height: 1.45; }
+.dlg label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 0.875rem; }
+.dlg select { font: inherit; padding: 6px; }
+.dlg .btn { font-size: 0.95rem; background: #e8e4da; color: var(--tinta); }
+.dlg .btn.primario { background: var(--primario); color: #fff; }
+.dlg .btn.robot { background: var(--robot); color: #fff; }
+.dlg-acciones { display: flex; justify-content: flex-end; gap: 8px; }
+
+/* Bloque en ejecución */
+.blocklySelected > .blocklyPath { stroke: #f2c14e !important; stroke-width: 4px !important; }
+
+@media (max-width: 1100px) {
+  .area { grid-template-columns: minmax(0, 1fr) 420px; }
+}
+
+/* Categorías de la caja de herramientas: siguen el tamaño elegido con A−/A+ */
+.blocklyToolboxCategoryLabel, .blocklyTreeLabel { font-size: 1rem !important; }
+.blocklyToolboxCategory, .blocklyTreeRow { height: auto !important; min-height: 1.6rem; line-height: 1.6rem !important; }
+
+/* Selección de varios bloques (js/seleccion.js) */
+.mlSeleccion > .blocklyPath { stroke: #3d8bff !important; stroke-width: 4px !important; stroke-dasharray: 7 4; }
+.mlQueda { opacity: .35; }
+.editor .mlRectangulo { position: absolute; z-index: 20; pointer-events: none; border: 2px dashed #3d8bff; background: rgba(61, 139, 255, .12); border-radius: 4px; }

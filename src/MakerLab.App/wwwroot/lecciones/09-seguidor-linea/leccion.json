@@ -1,0 +1,202 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "09-seguidor-linea",
+  "orden": 9,
+  "titulo": "Seguidor de línea",
+  "autor": "MakerLab",
+  "objetivo": "Integrar sensores, condicionales y repeticiones en un proyecto completo.",
+  "consigna": "Proyecto final: DAVE tiene que recorrer la pista siguiendo la línea negra hasta pasar por la meta. Tiene dos sensores infrarrojos adelante, uno a cada lado de la línea: cuando uno de ellos \"ve\" la línea, DAVE se está saliendo para ese lado.",
+  "pistas": [
+    "Si el sensor izquierdo ve la línea, hay que girar a la izquierda para volver a centrarse.",
+    "Si ninguno ve la línea, DAVE está centrado: avanzar.",
+    "Todo esto va dentro de \"repetir para siempre\"."
+  ],
+  "bloques": [
+    "dave_paso",
+    "dave_mover",
+    "dave_detener",
+    "dave_esperar",
+    "controls_repeat_ext",
+    "math_number",
+    "dave_led",
+    "dave_sonido",
+    "dave_esperar_boton",
+    "dave_boton",
+    "dave_si",
+    "dave_siempre",
+    "dave_si_sino",
+    "dave_obstaculo",
+    "dave_distancia",
+    "logic_compare",
+    "controls_whileUntil",
+    "logic_negate",
+    "logic_operation",
+    "logic_boolean",
+    "dave_linea"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 120,
+      "y": 170,
+      "angulo": 0
+    },
+    "lineas": [
+      [
+        [
+          235.0,
+          170.0
+        ],
+        [
+          243.8,
+          169.1
+        ],
+        [
+          252.2,
+          166.6
+        ],
+        [
+          260.0,
+          162.4
+        ],
+        [
+          266.8,
+          156.8
+        ],
+        [
+          272.4,
+          150.0
+        ],
+        [
+          276.6,
+          142.2
+        ],
+        [
+          279.1,
+          133.8
+        ],
+        [
+          280.0,
+          125.0
+        ],
+        [
+          280.0,
+          85.0
+        ],
+        [
+          279.1,
+          76.2
+        ],
+        [
+          276.6,
+          67.8
+        ],
+        [
+          272.4,
+          60.0
+        ],
+        [
+          266.8,
+          53.2
+        ],
+        [
+          260.0,
+          47.6
+        ],
+        [
+          252.2,
+          43.4
+        ],
+        [
+          243.8,
+          40.9
+        ],
+        [
+          235.0,
+          40.0
+        ],
+        [
+          85.0,
+          40.0
+        ],
+        [
+          76.2,
+          40.9
+        ],
+        [
+          67.8,
+          43.4
+        ],
+        [
+          60.0,
+          47.6
+        ],
+        [
+          53.2,
+          53.2
+        ],
+        [
+          47.6,
+          60.0
+        ],
+        [
+          43.4,
+          67.8
+        ],
+        [
+          40.9,
+          76.2
+        ],
+        [
+          40.0,
+          85.0
+        ],
+        [
+          40.0,
+          125.0
+        ],
+        [
+          40.9,
+          133.8
+        ],
+        [
+          43.4,
+          142.2
+        ],
+        [
+          47.6,
+          150.0
+        ],
+        [
+          53.2,
+          156.8
+        ],
+        [
+          60.0,
+          162.4
+        ],
+        [
+          67.8,
+          166.6
+        ],
+        [
+          76.2,
+          169.1
+        ],
+        [
+          85.0,
+          170.0
+        ],
+        [
+          235.0,
+          170.0
+        ]
+      ]
+    ],
+    "meta": {
+      "x": 150,
+      "y": 40,
+      "radio": 12
+    }
+  }
+}

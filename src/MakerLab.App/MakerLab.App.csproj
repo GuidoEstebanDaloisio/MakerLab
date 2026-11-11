@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Aplicación de escritorio de MakerLab (Windows 10 y 11).
+       La ventana es WPF y la interfaz de bloques y el simulador se muestran con
+       WebView2, el componente web que ya viene instalado en Windows. -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MakerLab.App</RootNamespace>
+    <AssemblyName>MakerLab</AssemblyName>
+    <Version>0.1.0</Version>
+    <Product>MakerLab</Product>
+    <Description>Entorno de programación por bloques y simulación para el robot educativo DAVE</Description>
+    <!-- Permite compilar (no ejecutar) el proyecto desde Linux o macOS. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2849.39" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MakerLab.Core\MakerLab.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- La interfaz web (bloques, simulador y lecciones) se copia junto al ejecutable. -->
+    <None Include="wwwroot\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <!-- arduino-cli y el paquete de placas (los descarga scripts/preparar-arduino-cli.ps1). -->
+    <None Include="tools\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

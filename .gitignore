@@ -1,0 +1,11 @@
+bin/
+obj/
+publicar/
+*.user
+.vs/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+# arduino-cli y sus paquetes se descargan con scripts/preparar-arduino-cli.ps1
+src/MakerLab.App/tools/

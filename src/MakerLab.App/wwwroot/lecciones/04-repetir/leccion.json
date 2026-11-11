@@ -1,0 +1,29 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "04-repetir",
+  "orden": 4,
+  "titulo": "Repetir",
+  "autor": "MakerLab",
+  "objetivo": "Usar la repetición para acortar un algoritmo que tiene partes iguales.",
+  "consigna": "Hacé que DAVE dibuje un cuadrado con su recorrido. Primero resolvelo sin \"repetir\" y después con \"repetir\": ¿cuántos bloques te ahorraste? Desafío: dibujá una escalera.",
+  "pistas": [
+    "Un cuadrado son cuatro veces lo mismo: avanzar y girar.",
+    "Lo que se repite va adentro del bloque \"repetir\"."
+  ],
+  "bloques": [
+    "dave_paso",
+    "dave_mover",
+    "dave_detener",
+    "dave_esperar",
+    "controls_repeat_ext",
+    "math_number"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 110,
+      "y": 160,
+      "angulo": 0
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "10-libre",
+  "orden": 10,
+  "titulo": "Proyecto libre",
+  "autor": "MakerLab",
+  "objetivo": "Crear un programa propio combinando todo lo aprendido.",
+  "consigna": "Inventá tu propio desafío: un robot que patrulla, una alarma que suena si algo se acerca, una carrera… Ahora también podés usar variables para contar y hacer cuentas.",
+  "pistas": [
+    "Una variable es una caja con un nombre donde DAVE guarda un número.",
+    "Probá contar cuántas veces DAVE encuentra un obstáculo.",
+    "Con \"según el valor de\" y \"número del botón presionado\", cada botón puede hacer algo distinto: por ejemplo, 1 avanza, 2 gira y 3 hace sonar la bocina."
+  ],
+  "bloques": [
+    "dave_paso",
+    "dave_mover",
+    "dave_detener",
+    "dave_esperar",
+    "controls_repeat_ext",
+    "math_number",
+    "dave_led",
+    "dave_sonido",
+    "dave_esperar_boton",
+    "dave_boton",
+    "dave_si",
+    "dave_siempre",
+    "dave_si_sino",
+    "dave_obstaculo",
+    "dave_distancia",
+    "logic_compare",
+    "controls_whileUntil",
+    "logic_negate",
+    "logic_operation",
+    "logic_boolean",
+    "dave_linea",
+    "dave_segun",
+    "dave_boton_numero",
+    "math_arithmetic",
+    "variables"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 40,
+      "y": 105,
+      "angulo": 0
+    },
+    "lineas": [
+      [
+        [
+          20,
+          190
+        ],
+        [
+          300,
+          190
+        ]
+      ]
+    ],
+    "obstaculos": [
+      {
+        "x": 150,
+        "y": 20,
+        "ancho": 20,
+        "alto": 60
+      },
+      {
+        "x": 230,
+        "y": 110,
+        "ancho": 40,
+        "alto": 20
+      }
+    ]
+  }
+}

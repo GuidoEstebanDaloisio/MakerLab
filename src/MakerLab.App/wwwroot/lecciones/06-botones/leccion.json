@@ -1,0 +1,40 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "06-botones",
+  "orden": 6,
+  "titulo": "Los botones",
+  "autor": "MakerLab",
+  "objetivo": "Leer una entrada digital simple: el estado de un botón.",
+  "consigna": "DAVE tiene que quedarse quieto hasta que alguien presione el botón 1. Ahí enciende las luces blancas y va hasta la meta. Para presionar un botón en el simulador, hacé clic en los círculos 1, 2 o 3.",
+  "pistas": [
+    "Usá el bloque \"esperar a que presionen el botón\".",
+    "Probá apretar otro botón: ¿qué pasa?",
+    "Desafío: con el botón 2, que DAVE haga sonar la bocina antes de salir."
+  ],
+  "bloques": [
+    "dave_paso",
+    "dave_mover",
+    "dave_detener",
+    "dave_esperar",
+    "controls_repeat_ext",
+    "math_number",
+    "dave_led",
+    "dave_sonido",
+    "dave_esperar_boton",
+    "dave_boton",
+    "dave_si"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 40,
+      "y": 105,
+      "angulo": 0
+    },
+    "meta": {
+      "x": 200,
+      "y": 105,
+      "radio": 14
+    }
+  }
+}

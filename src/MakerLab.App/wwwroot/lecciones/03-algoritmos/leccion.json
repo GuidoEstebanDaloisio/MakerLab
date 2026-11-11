@@ -1,0 +1,55 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "03-algoritmos",
+  "orden": 3,
+  "titulo": "De A hasta B",
+  "autor": "MakerLab",
+  "objetivo": "Planificar una secuencia de instrucciones (algoritmo) para resolver un recorrido.",
+  "consigna": "Llevá a DAVE desde el punto A hasta el punto B sin chocar con las paredes. Antes de usar la computadora, dibujá el camino en una hoja y escribí los pasos en orden: eso es un algoritmo.",
+  "pistas": [
+    "Dividí el camino en tramos rectos y anotá la longitud de cada uno.",
+    "Entre tramo y tramo DAVE tiene que girar. ¿Para qué lado?",
+    "Podés usar \"un paso\" o combinar \"avanzar\" con \"esperar\"."
+  ],
+  "bloques": [
+    "dave_paso",
+    "dave_mover",
+    "dave_detener",
+    "dave_esperar"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 40,
+      "y": 180,
+      "angulo": -90
+    },
+    "meta": {
+      "x": 280,
+      "y": 180,
+      "radio": 12,
+      "texto": "B"
+    },
+    "marcas": [
+      {
+        "x": 40,
+        "y": 180,
+        "texto": "A"
+      }
+    ],
+    "obstaculos": [
+      {
+        "x": 100,
+        "y": 70,
+        "ancho": 20,
+        "alto": 140
+      },
+      {
+        "x": 200,
+        "y": 0,
+        "ancho": 20,
+        "alto": 140
+      }
+    ]
+  }
+}

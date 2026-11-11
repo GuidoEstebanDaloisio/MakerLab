@@ -1,0 +1,54 @@
+{
+  "formato": "makerlab-leccion",
+  "version": 1,
+  "id": "07-ultrasonido",
+  "orden": 7,
+  "titulo": "¿Hay algo adelante?",
+  "autor": "MakerLab",
+  "objetivo": "Tomar decisiones a partir de un sensor: el condicional \"si… si no\".",
+  "consigna": "DAVE avanza hacia una pared. Usá el sensor ultrasónico para que se detenga a menos de 20 cm y encienda el LED rojo, sin chocar. Como DAVE tiene que mirar el sensor todo el tiempo, la decisión va dentro de \"repetir para siempre\".",
+  "pistas": [
+    "Dentro de \"repetir para siempre\": si hay un obstáculo a menos de 20 cm, detenerse; si no, avanzar.",
+    "Mirá la lectura \"Distancia\" debajo del simulador mientras DAVE se mueve."
+  ],
+  "bloques": [
+    "dave_paso",
+    "dave_mover",
+    "dave_detener",
+    "dave_esperar",
+    "controls_repeat_ext",
+    "math_number",
+    "dave_led",
+    "dave_sonido",
+    "dave_esperar_boton",
+    "dave_boton",
+    "dave_si",
+    "dave_siempre",
+    "dave_si_sino",
+    "dave_obstaculo",
+    "dave_distancia",
+    "logic_compare"
+  ],
+  "escenario": {
+    "robot": {
+      "x": 40,
+      "y": 105,
+      "angulo": 0
+    },
+    "meta": {
+      "x": 232,
+      "y": 105,
+      "radio": 14,
+      "detenerse": true,
+      "texto": ""
+    },
+    "obstaculos": [
+      {
+        "x": 260,
+        "y": 30,
+        "ancho": 16,
+        "alto": 150
+      }
+    ]
+  }
+}
